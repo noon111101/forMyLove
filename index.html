@@ -99,6 +99,12 @@
     /*
    * Settings
    */
+    const randomColor = "#EE82EE";
+    const setBg = () => {
+      randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      console.log(randomColor)
+    }
+    setInterval(() => setBg(), 1000);
     var settings = {
       particles: {
         length: 2000, // maximum amount of particles
@@ -279,13 +285,15 @@
         }
         context.closePath();
         // create the fill
-        context.fillStyle = '#FF5CA4';
+
+        context.fillStyle = randomColor;
         context.fill();
         // create the image
         var image = new Image();
         image.src = canvas.toDataURL();
         return image;
       })();
+
 
       // render that thing!
       function render() {
@@ -319,13 +327,14 @@
         canvas.height = canvas.clientHeight;
       }
       window.onresize = onResize;
-
       // delay rendering bootstrap
+
       setTimeout(function () {
         onResize();
         render();
       }, 10);
     })(document.getElementById('pinkboard'));
+
   </script>
 </BODY>
 
